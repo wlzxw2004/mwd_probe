@@ -4,6 +4,7 @@
 
 
 #include "delay.h"
+#include "iwdg.h"
 
 #define AHB_INPUT  72  //请按RCC中设置的AHB时钟频率填写到这里（单位MHz）
 
@@ -16,13 +17,18 @@ void delay_us(u32 uS){ 					//uS微秒级延时程序（参考值即是延时数，72MHz时最大值2
 	SysTick->CTRL=0x00000004;			//关闭定时器
 }
 
-void delay_ms(u16 ms){ //mS毫秒级延时程序（参考值即是延时数，最大值65535）	 		  	  
-	while( ms-- != 0){
+void delay_ms(u16 ms)
+	
+{ //mS毫秒级延时程序（参考值即是延时数，最大值65535）	 	
+	IWDG_Feed();
+	while( ms-- != 0)	
+	{	
 		delay_us(1000);	//调用1000微秒的延时
 	}
 }
  
-void delay_s(u16 s){ //S秒级延时程序（参考值即是延时数，最大值65535）	 		  	  
+void delay_s(u16 s)
+{ //S秒级延时程序（参考值即是延时数，最大值65535）	 		  	  
 	while( s-- != 0){
 		delay_ms(1000);	//调用1000毫秒的延时
 	}

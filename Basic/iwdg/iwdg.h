@@ -18,7 +18,7 @@
 #define pre		IWDG_Prescaler_32 //分频值范围：4,8,16,32,64,128,256
 #define rlr		625 //重装载值范围：0～0xFFF（4095）
 
-void IWDG_Init(void);
+void IWDG_Init(u8 prer,u16 rl);
 void IWDG_Feed(void);
 		 				    
 #endif
