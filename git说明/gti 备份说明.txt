@@ -1,0 +1,18 @@
+1、在D:\STM32_MWD_GIT\STM32_MWD200612-c8    路径下，点击右键
+2、点击Git Bash Here
+3、输入命令：git remote add origin git@github.com:wlzxw2004/mwd_probe
+4、再输入命令：git push -u origin master
+5、等待备份完成
+6、完成后输出如下内容：
+Warning: Permanently added the RSA host key for IP address '13.250.177.223' to the list of known hosts.
+Enter passphrase for key '/c/Users/54663/.ssh/id_rsa':
+Enumerating objects: 139, done.
+Counting objects: 100% (139/139), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (137/137), done.
+Writing objects: 100% (139/139), 353.00 KiB | 3.27 MiB/s, done.
+Total 139 (delta 28), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (28/28), done.
+To github.com:wlzxw2004/mwd_probe
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
