@@ -224,6 +224,15 @@ void data_copy(void)
 		Send_buf[i]=Rdy_buf[i];
 	}
 }
+void data_copy_dynamic(u8 *dest,const u8 *source,u8 size)
+{
+	u8 i;
+
+	for(i=0;i<size;i++)
+	{
+		dest[i]=source[i];
+	}	
+}
 //===============================
 ////-----------------------------------------------------------------------------
 //函数名称： get_data
@@ -370,7 +379,7 @@ void Data_Calculate_g(u8 sque,u8  position)
 		u32 L_dat;
 	
 
-		get_data(usart_director_data,usart_gamma_data);
+		get_data(usart_director_data_dynamic,usart_gamma_data);
 		if(sque==8)																													//如果更新序列8的数据，井斜大于5度，置位重力工具面转换标志位，同时发送重力工具面
 		{
 			if(INC3_DAT>=50)
@@ -522,7 +531,7 @@ void Data_Calculate(u8 sque,u8  position)
 	
 
 
-		get_data(usart_director_data,usart_gamma_data);
+		get_data(usart_director_data_dynamic,usart_gamma_data);
 		if(sque==8)																													//如果更新序列8的数据，井斜大于5度，置位重力工具面转换标志位，同时发送重力工具面
 		{
 			if(INC3_DAT>=50)

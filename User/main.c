@@ -90,11 +90,13 @@ int main (void)									//主程序
 	}	
 	if(Gamma_connect_flag)
 	{
+		data_copy_dynamic(usart_director_data_dynamic,usart_director_data,D_DATA_SIZE);				//	
 		Data_Calculate_g(8,0);
 		data_copy();		
 	}
 	else
 	{
+		data_copy_dynamic(usart_director_data_dynamic,usart_director_data,D_DATA_SIZE);				//	
 		Data_Calculate(8,0);
 		data_copy();	
 	}
@@ -124,8 +126,13 @@ int main (void)									//主程序
 	while(1)						//主循环
 	{
 			IWDG_Feed();
-			vibration_sta_judge();												
-
+			vibration_sta_judge();	
+			if(Director_data_receive_flag)					//一组数据接收完成后，复制到动态数组中
+			{
+				Director_data_receive_flag=0;
+				data_copy_dynamic(usart_director_data_dynamic,usart_director_data,D_DATA_SIZE);				//	
+			}
+			
 ////////////////////////////////////////////////////////////////////////////////////////////
 //数据计算和发送
 

@@ -3,6 +3,7 @@
 u8 usart_director_data[D_DATA_SIZE];
 u8 usart_gamma_data[G_DATA_SIZE];
 u8 usart_director_data_sta[D_DATA_SIZE];
+u8 usart_director_data_dynamic[D_DATA_SIZE];
 u8 Director_data_receive_flag=0;
 u8 Gamma_data_receive_flag=0;
 u32  P_delay_time=0;

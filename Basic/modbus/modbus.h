@@ -13,6 +13,7 @@ void Data_Calculate_g(u8 sque,u8  position);
 void Data_Calculate_sta(u8 sq);
 void Data_Calculate_sta_g(u8 sq);
 void data_copy(void);
+void data_copy_dynamic(u8 *dest,const u8 *source,u8 size);
 void get_data(const u8 arr_d[],const u8 arr_g[]);
 
 extern	u8 Rdy_buf[256];
