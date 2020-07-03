@@ -91,6 +91,7 @@ int main (void)									//主程序
 	if(Gamma_connect_flag)
 	{
 		data_copy_dynamic(usart_director_data_dynamic,usart_director_data,D_DATA_SIZE);				//	
+		data_copy_dynamic(usart_gamma_data_dynamic,usart_gamma_data,G_DATA_SIZE);				//	
 		Data_Calculate_g(8,0);
 		data_copy();		
 	}
@@ -132,7 +133,11 @@ int main (void)									//主程序
 				Director_data_receive_flag=0;
 				data_copy_dynamic(usart_director_data_dynamic,usart_director_data,D_DATA_SIZE);				//	
 			}
-			
+			if(Gamma_data_receive_flag)
+			{
+				Gamma_data_receive_flag=0;
+				data_copy_dynamic(usart_gamma_data_dynamic,usart_gamma_data,G_DATA_SIZE);	
+			}
 ////////////////////////////////////////////////////////////////////////////////////////////
 //数据计算和发送
 
@@ -267,13 +272,16 @@ void vibration_sta_judge(void)
 			{
 				Vibration_flag=0;
 				Sque_4_flag=0;	
-				for(i=0;i<D_DATA_SIZE;i++)
+				if(Director_data_receive_flag)		
 				{
-					usart_director_data_sta[i]=usart_director_data[i];			//静止状态下，更新静态数据
-				}					
+					Director_data_receive_flag=0;
+					for(i=0;i<D_DATA_SIZE;i++)
+					{
+						usart_director_data_sta[i]=usart_director_data[i];			//静止状态下，当接收完成一组数据后，更新静态数据
+					}						
+				}
+			
 			}			
-
-
 		}
 		
 		if(Vibration_flag)																					//是否有上升沿
@@ -342,7 +350,7 @@ void send_data_init(u8 sq)
 			W_BX_NUM = 0;	
 			Sque_6_count=0;
 			LK_LEDCTL_OFF;
-			delay_s(10);					//序列4发送之前的等待时间
+			delay_s(30);					//序列4发送之前的等待时间
 			LK_LEDCTL_ON;
 			delay_ms(1500);
 			LK_LEDCTL_OFF;

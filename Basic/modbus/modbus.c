@@ -379,7 +379,7 @@ void Data_Calculate_g(u8 sque,u8  position)
 		u32 L_dat;
 	
 
-		get_data(usart_director_data_dynamic,usart_gamma_data);
+		get_data(usart_director_data_dynamic,usart_gamma_data_dynamic);
 		if(sque==8)																													//如果更新序列8的数据，井斜大于5度，置位重力工具面转换标志位，同时发送重力工具面
 		{
 			if(INC3_DAT>=50)

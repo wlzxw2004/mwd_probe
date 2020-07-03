@@ -12,6 +12,7 @@
 
 extern u8 usart_director_data[];
 extern u8 usart_gamma_data[];
+extern u8 usart_gamma_data_dynamic[];
 extern u8 usart_director_data_sta[];
 extern u8 usart_director_data_dynamic[];
 extern u8 Director_data_receive_flag;
